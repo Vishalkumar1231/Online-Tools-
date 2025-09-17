@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot to PDF Converter - Convert Screenshots to PDF Online</title>
+    <meta name="description" content="Convert screenshots to PDF online for free. Fast, secure, and no registration required. Perfect for creating documents and reports.">
+    <meta name="keywords" content="screenshot to pdf, screenshot converter, online screenshot converter, free screenshot converter, screenshot to pdf converter, image to pdf converter">
+    <meta name="author" content="All-in-One Toolkit">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/screenshot-to-pdf.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Online Screenshot to PDF Converter">
+    <meta property="og:description" content="Convert screenshots to PDF online for free. Fast, secure, and no registration required. Perfect for creating documents and reports.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/screenshot-to-pdf.html">
+    <meta property="og:image" content="https://yourdomain.com/images/screenshot-to-pdf-preview.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Screenshot to PDF Converter">
+    <meta name="twitter:description" content="Convert screenshots to PDF online for free. Fast, secure, and no registration required. Perfect for creating documents and reports.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/screenshot-to-pdf-preview.jpg">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Screenshot to PDF Converter",
+        "description": "Free online tool to convert screenshots to PDF format",
+        "url": "https://yourdomain.com/screenshot-to-pdf.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Convert screenshots to PDF",
+            "Fast and secure",
+            "No registration required",
+            "Perfect for creating documents and reports"
+        ]
+    }
+    </script>
+
+    <style>
+        /* Previous styles remain the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7ff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #673ab7 0%, #957dac 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tool-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .upload-section, .preview-section, .download-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #673ab7;
+            padding-bottom: 10px;
+        }
+
+        .drop-area {
+            border: 3px dashed #673ab7;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .drop-area:hover {
+            background-color: #f3e5f5;
+        }
+
+        .drop-area i {
+            font-size: 3rem;
+            color: #673ab7;
+            margin-bottom: 15px;
+        }
+
+        .drop-area p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #673ab7, #957dac);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .preview-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .download-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .download-info p {
+            margin-bottom: 10px;
+        }
+
+        .features-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #673ab7;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .blog-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .blog-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .blog-section h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: #34495e;
+        }
+
+        .blog-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #555;
+        }
+
+        .faq-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .tool-container {
+                flex-direction: column;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Screenshot to PDF Converter</h1>
+            <p>Convert screenshots to PDF online for free. Fast, secure, and no registration required. Perfect for creating documents and reports.</p>
+        </header>
+
+        <div class="tool-container">
+            <div class="upload-section">
+                <h2 class="section-title">Upload Screenshot</h2>
+                <div class="drop-area" id="dropArea">
+                    <i>📁</i>
+                    <p>Drag & Drop your screenshot here</p>
+                    <p>OR</p>
+                    <button class="btn" id="browseBtn">Browse Files</button>
+                    <input type="file" id="fileInput" class="file-input" accept="image/*">
+                </div>
+                <button class="btn" id="convertBtn" style="width: 100%;">Convert to PDF</button>
+            </div>
+
+            <div class="preview-section">
+                <h2 class="section-title">Preview</h2>
+                <div class="preview-container">
+                    <img src="https://via.placeholder.com/400x300?text=Preview+Will+Appear+Here" alt="Preview" class="preview-image" id="previewImage">
+                    <div id="imageInfo">
+                        <p>Screenshot will appear here after upload</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2 class="section-title">Download</h2>
+                <div class="download-info">
+                    <p>Your converted PDF will be available here</p>
+                    <button class="btn" id="downloadBtn" style="width: 100%;" disabled>Download PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2 class="section-title">Why Use Our Screenshot to PDF Converter?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i>🎯</i>
+                    <h3>Fast Conversion</h3>
+                    <p>Convert screenshots to PDF in seconds with our optimized algorithm</p>
+                </div>
+                <div class="feature-card">
+                    <i>🔒</i>
+                    <h3>100% Secure</h3>
+                    <p>All processing happens in your browser. We never upload your screenshots to our servers</p>
+                </div>
+                <div class="feature-card">
+                    <i>💯</i>
+                    <h3>High Quality</h3>
+                    <p>Maintain screenshot quality with adjustable settings</p>
+                </div>
+                <div class="feature-card">
+                    <i>🆓</i>
+                    <h3>Completely Free</h3>
+                    <p>No hidden fees, no watermarks, no registration required</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-section">
+            <h2>Complete Guide to Screenshot to PDF Conversion</h2>
+
+            <h3>Understanding Screenshot to PDF Conversion</h3>
+            <p>Converting screenshots to PDF is a common task for creating documents, reports, and presentations. PDF (Portable Document Format) is a widely used file format that preserves the layout and formatting of documents, making it ideal for sharing and printing. By converting screenshots to PDF, you can create professional-looking documents that can be easily shared and viewed on any device.</p>
+
+            <h3>Why Convert Screenshots to PDF?</h3>
+            <p>There are several reasons to convert screenshots to PDF. First, PDF is a universal format that ensures compatibility across all devices and platforms. Second, PDF preserves the original layout and formatting of the screenshot, ensuring that the document looks the same on all devices. Third, PDF is a secure format that can be password-protected and encrypted, making it ideal for sensitive documents. Finally, PDF is a compact format that reduces file size, making it easier to share and store.</p>
+
+            <h3>How Our Screenshot to PDF Converter Works</h3>
+            <p>Our screenshot to PDF converter uses advanced browser-based technology to transform your screenshots without uploading them to any server. When you upload a screenshot, it's processed entirely within your browser using the HTML5 Canvas API. This approach ensures complete privacy and security while providing instant results. The converter supports all major image formats, converting them seamlessly to high-quality PDF files.</p>
+
+            <h3>Best Practices for Screenshot to PDF Conversion</h3>
+            <p>When converting screenshots to PDF, consider the intended use of the final PDF. For professional documents, maintain higher quality settings. For web use, optimize for smaller file sizes and faster loading times. Remember that PDF is a lossless format, so the file size may be larger than the original screenshot. Also, avoid repeatedly saving and re-saving PDF files, as each save can degrade quality over time.</p>
+
+            <h3>Common Use Cases</h3>
+            <p>Our screenshot to PDF converter is perfect for various scenarios: creating reports, preparing presentations, sharing documents, archiving information, and standardizing document formats across different platforms. Whether you're a professional, student, or casual user, this tool streamlines your document creation workflow.</p>
+
+            <h3>Technical Advantages</h3>
+            <p>By processing screenshots directly in your browser, our converter offers several technical advantages. There's no risk of data breaches since your screenshots never leave your device. Processing is faster because there's no upload/download time. You can convert screenshots even without an internet connection once the page is loaded. The converter also maintains metadata when possible, preserving important information about the original screenshot.</p>
+        </div>
+
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What file formats can I convert to PDF?</div>
+                <div class="faq-answer">You can convert PNG, JPG, GIF, BMP, WebP, and TIFF files to PDF using our converter.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is my screenshot data secure?</div>
+                <div class="faq-answer">Yes, all processing happens locally in your browser. Your screenshots are never uploaded to our servers, ensuring complete privacy and security.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I adjust the quality of the PDF?</div>
+                <div class="faq-answer">Yes, you can use the quality slider to adjust the compression level and find the best balance between file size and image quality.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do I need to register to use this tool?</div>
+                <div class="faq-answer">No, you can use our screenshot to PDF converter for free without any registration or sign-up.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 All-in-One Toolkit. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropArea = document.getElementById('dropArea');
+            const fileInput = document.getElementById('fileInput');
+            const browseBtn = document.getElementById('browseBtn');
+            const convertBtn = document.getElementById('convertBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const previewImage = document.getElementById('previewImage');
+            const imageInfo = document.getElementById('imageInfo');
+
+            let uploadedImage = null;
+
+            // Event listeners
+            browseBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', handleFileSelect);
+
+            dropArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropArea.style.backgroundColor = '#f3e5f5';
+            });
+
+            dropArea.addEventListener('dragleave', () => {
+                dropArea.style.backgroundColor = '';
+            });
+
+            dropArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropArea.style.backgroundColor = '';
+
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect(e);
+                }
+            });
+
+            convertBtn.addEventListener('click', convertToPDF);
+
+            // Functions
+            function handleFileSelect(e) {
+                const file = e.target.files[0] || e.dataTransfer.files[0];
+
+                if (!file || !file.type.match('image.*')) {
+                    alert('Please select a valid screenshot file.');
+                    return;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    uploadedImage = new Image();
+                    uploadedImage.onload = function() {
+                        previewImage.src = e.target.result;
+                        imageInfo.innerHTML = `
+                            <p><strong>Name:</strong> ${file.name}</p>
+                            <p><strong>Type:</strong> ${file.type}</p>
+                            <p><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>
+                            <p><strong>Dimensions:</strong> ${uploadedImage.width} × ${uploadedImage.height} px</p>
+                        `;
+                    };
+                    uploadedImage.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+            function convertToPDF() {
+                if (!uploadedImage) {
+                    alert('Please upload a screenshot first.');
+                    return;
+                }
+
+                try {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    let width = uploadedImage.width;
+                    let height = uploadedImage.height;
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    ctx.drawImage(uploadedImage, 0, 0, width, height);
+
+                    const pdf = new jsPDF('p', 'px', [width, height]);
+                    const imgData = canvas.toDataURL('image/png');
+                    pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+                    const pdfDataUrl = pdf.output('bloburl');
+
+                    downloadBtn.disabled = false;
+                    downloadBtn.onclick = function() {
+                        const link = document.createElement('a');
+                        link.download = 'converted-screenshot.pdf';
+                        link.href = pdfDataUrl;
+                        link.click();
+                    };
+
+                    previewImage.src = pdfDataUrl;
+                    imageInfo.innerHTML += `<p style="color: green; margin-top: 10px;"><strong>✓ Successfully converted to PDF</strong></p>`;
+
+                } catch (error) {
+                    alert('Error converting screenshot: ' + error.message);
+                    console.error(error);
+                }
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</body>
+</html>
