@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiTools -  Online Tools</title>
+    <meta name="description" content="Free online tools for developers, designers, and everyday users. Image converters, calculators, SEO tools, text utilities, unit converters and more.">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6f42c1;
+            --light-bg: #f8f9fc;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 80px;
+        }
+        
+        .navbar {
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
+        }
+        
+        .category-title {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin: 40px 0 25px;
+            font-weight: 600;
+        }
+        
+        .tool-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: rgba(78, 115, 223, 0.1);
+        }
+        
+        .ad-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .ad-placeholder {
+            background: linear-gradient(45deg, #f3f6f9, #e9ecef);
+            padding: 25px;
+            border-radius: 8px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        footer {
+            background: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            box-shadow: 0 -0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .search-result-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .search-result-item:hover {
+            background: #f8f9fc;
+        }
+        
+        .category-badge {
+            font-size: 0.75rem;
+            background: var(--secondary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(120deg, #4e73df 0%, #6f42c1 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5cce;
+            border-color: #3a5cce;
+        }
+        
+        .social-links a {
+            color: #6c757d;
+            transition: color 0.3s;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .tool-card .card-body {
+            padding: 25px;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stats-box {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .category-title {
+                margin: 30px 0 20px;
+            }
+            
+            .hero-section {
+                padding: 40px 0;
+            }
+            
+            .tool-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tools me-2"></i>MultiTools
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#image-tools">Image Tools</a></li>
+                            <li><a class="dropdown-item" href="#seo-tools">SEO Tools</a></li>
+                            <li><a class="dropdown-item" href="#text-tools">Text Tools</a></li>
+                            <li><a class="dropdown-item" href="#developer-tools">Developer Tools</a></li>
+                            <li><a class="dropdown-item" href="#math-calculators">Math & Calculators</a></li>
+                            <li><a class="dropdown-item" href="#unit-converters">Unit Converters</a></li>
+                            <li><a class="dropdown-item" href="#security-tools">Security Tools</a></li>
+                            <li><a class="dropdown-item" href="#social-media-tools">Social Media Tools</a></li>
+                            <li><a class="dropdown-item" href="#document-tools">Document Tools</a></li>
+                            <li><a class="dropdown-item" href="#web-tools">Web Tools</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-github me-1"></i> GitHub</a>
+                    <a href="#" class="btn btn-outline-light"><i class="fab fa-twitter me-1"></i> Twitter</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Hero Section -->
+        <section class="hero-section text-center">
+            <div class="container">
+                <h1 class="display-4 fw-bold mb-3">Free Online Tools</h1>
+                <p class="lead mb-4">All the tools you need in one place - converters, calculators, generators and utilities for developers, designers and everyday use.</p>
+                
+                <!-- Search Bar -->
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-8 search-container">
+                        <div class="input-group input-group-lg">
+                            <input type="text" id="search-input" class="form-control form-control-lg" placeholder="Search for tools..." aria-label="Search for tools">
+                            <button class="btn btn-primary" type="button" id="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-results" id="search-results"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <p><i class="fas fa-ad me-2"></i>Advertisement Space</p>
+                <p class="small mb-0">728 x 90px banner</p>
+            </div>
+        </div>
+
+        <!-- Tools Stats -->
+        <div class="row mb-5">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stats-box">
+                    <div class="stats-number">free Online</div>
+                    <div>Tools Available</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stats-box">
+                    <div class="stats-number">10</div>
+                    <div>Categories</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stats-box">
+                    <div class="stats-number">0</div>
+                    <div>Registration Required</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stats-box">
+                    <div class="stats-number">100%</div>
+                    <div>Free Tools</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools by Category -->
+        <div id="tools-container">
+            <!-- Tools will be loaded dynamically by category -->
+        </div>
+
+        <!-- Bottom Ad Banner -->
+        <div class="ad-container mt-5">
+            <div class="ad-placeholder">
+                <p><i class="fas fa-ad me-2"></i>Advertisement Space</p>
+                <p class="small mb-0">728 x 90px banner</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-tools me-2"></i>MultiTools</h5>
+                    <p class="mb-3">Your all-in-one solution for free online tools. We offer  tools to make your work easier.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#image-tools">Image Tools</a></li>
+                        <li class="mb-2"><a href="#seo-tools">SEO Tools</a></li>
+                        <li class="mb-2"><a href="#text-tools">Text Tools</a></li>
+                        <li class="mb-2"><a href="#developer-tools">Developer Tools</a></li>
+                        <li class="mb-2"><a href="#math-calculators">Calculators</a></li>
+                        <li class="mb-2"><a href="#security-tools">Security Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Home</a></li>
+                        <li class="mb-2"><a href="#">About Us</a></li>
+                        <li class="mb-2"><a href="#">Contact</a></li>
+                        <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p class="mb-3">Subscribe to our newsletter to get updates on new tools.</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 MultiTools. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <a href="#">Privacy Policy</a> | 
+                        <a href="#">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+    // Tools data
+const tools = [
+{ name:"Image to JPG", category:"Image Tools", icon:"fa-image", link:"image-to-jpg.html" },
+{ name:"Image Resizer", category:"Image Tools", icon:"fa-expand", link:"image-resizer.html" },
+{ name:"Image Compressor", category:"Image Tools", icon:"fa-compress", link:"image-compressor.html" },
+{ name:"Image Cropper", category:"Image Tools", icon:"fa-crop", link:"image-cropper.html" },
+{ name:"Image to Base64", category:"Image Tools", icon:"fa-code", link:"image-to-base64.html" },
+{ name:"WebP to PNG", category:"Image Tools", icon:"fa-file-image", link:"webp-to-png.html" },
+{ name:"GIF Maker", category:"Image Tools", icon:"fa-film", link:"gif-maker.html" },
+{ name:"QR Code Generator", category:"Generators", icon:"fa-qrcode", link:"qr-code-generator.html" },
+{ name:"Screenshot to PDF", category:"Converters", icon:"fa-file-pdf", link:"screenshot-to-pdf.html" },
+{ name:"Image to SVG", category:"Image Tools", icon:"fa-draw-polygon", link:"image-to-svg.html" },
+{ name:"Image Watermark", category:"Image Tools", icon:"fa-tint", link:"image-watermark.html" },
+{ name:"Image Rotator", category:"Image Tools", icon:"fa-sync", link:"image-rotator.html" },
+{ name:"Image Filter", category:"Image Tools", icon:"fa-adjust", link:"image-filter.html" },
+{ name:"Image Metadata", category:"Image Tools", icon:"fa-info-circle", link:"image-metadata.html" },
+{ name:"Meta Tag Generator", category:"SEO Tools", icon:"fa-tags", link:"meta-tag-generator.html" },
+{ name:"Keyword Density Checker", category:"SEO Tools", icon:"fa-keyboard", link:"keyword-density-checker.html" },
+{ name:"Sitemap Generator", category:"SEO Tools", icon:"fa-sitemap", link:"sitemap-generator.html" },
+{ name:"Robots.txt Generator", category:"SEO Tools", icon:"fa-robot", link:"robots-generator.html" },
+{ name:"Google Index Checker", category:"SEO Tools", icon:"fa-google", link:"google-index-checker.html" },
+{ name:"Domain Authority Checker", category:"SEO Tools", icon:"fa-chart-line", link:"domain-authority-checker.html" },
+{ name:"Backlink Checker", category:"SEO Tools", icon:"fa-link", link:"backlink-checker.html" },
+{ name:"Page Speed Checker", category:"SEO Tools", icon:"fa-tachometer-alt", link:"page-speed-checker.html" },
+{ name:"XML Sitemap Validator", category:"SEO Tools", icon:"fa-code", link:"xml-sitemap-validator.html" },
+{ name:"Mobile Friendly Test", category:"SEO Tools", icon:"fa-mobile-alt", link:"mobile-friendly-test.html" },
+{ name:"SEO Audit", category:"SEO Tools", icon:"fa-search", link:"seo-audit.html" },
+{ name:"Keyword Research", category:"SEO Tools", icon:"fa-lightbulb", link:"keyword-research.html" },
+{ name:"Content Optimization", category:"SEO Tools", icon:"fa-pen", link:"content-optimization.html" },
+{ name:"Backlink Analyzer", category:"SEO Tools", icon:"fa-search-plus", link:"backlink-analyzer.html" }
+];
+        // Categories in the order we want to display them
+        const categories = [
+            "Image Tools",
+            "SEO Tools",
+            "Text Tools",
+            "Developer Tools",
+            "Math & Calculators",
+            "Unit Converters",
+            "Security Tools",
+            "Social Media Tools",
+            "Document Tools",
+            "Web Tools"
+        ];
+        
+        // Function to load tools by category
+        function loadTools() {
+            const toolsContainer = document.getElementById('tools-container');
+            toolsContainer.innerHTML = '';
+            
+            categories.forEach(category => {
+                // Create category section
+                const categorySection = document.createElement('div');
+                const categoryId = category.replace(/\s+/g, '-').toLowerCase();
+                categorySection.innerHTML = `
+                    <h2 class="category-title" id="${categoryId}">${category}</h2>
+                    <div class="row" id="tools-${categoryId}">
+                    </div>
+                `;
+                toolsContainer.appendChild(categorySection);
+                
+                // Filter tools by category
+                const categoryTools = tools.filter(tool => tool.category === category);
+                
+                // Add tools to category
+                const categoryElement = document.getElementById(`tools-${categoryId}`);
+                
+                categoryTools.forEach(tool => {
+                    const toolElement = document.createElement('div');
+                    toolElement.className = 'col-xl-3 col-lg-4 col-md-6 mb-4';
+                    toolElement.innerHTML = `
+                        <a href="${tool.link}" class="text-decoration-none text-dark">
+                            <div class="card tool-card h-100">
+                                <div class="card-body text-center">
+                                    <div class="tool-icon">
+                                        <i class="fas ${tool.icon}"></i>
+                                    </div>
+                                    <h5 class="card-title">${tool.name}</h5>
+                                    <span class="badge category-badge">${tool.category}</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    categoryElement.appendChild(toolElement);
+                });
+            });
+        }
+        
+        // Function to setup search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase();
+                
+                if (query.length < 2) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                // Filter tools based on search query
+                const filteredTools = tools.filter(tool => 
+                    tool.name.toLowerCase().includes(query) || 
+                    tool.category.toLowerCase().includes(query)
+                );
+                
+                // Display results
+                searchResults.innerHTML = '';
+                
+                if (filteredTools.length > 0) {
+                    filteredTools.forEach(tool => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <a href="${tool.link}" class="text-decoration-none text-dark d-block">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>${tool.name}</div>
+                                    <div><span class="badge bg-primary">${tool.category}</span></div>
+                                </div>
+                            </a>
+                        `;
+                        searchResults.appendChild(resultItem);
+                    });
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.innerHTML = '<div class="search-result-item text-center">No tools found</div>';
+                    searchResults.style.display = 'block';
+                }
+            });
+            
+            // Hide search results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            
+            // Search button event
+            document.getElementById('search-button').addEventListener('click', function() {
+                searchInput.focus();
+                if (searchInput.value.length >= 2) {
+                    searchInput.dispatchEvent(new Event('input'));
+                }
+            });
+        }
+        
+        // Initialize when document is ready
+        $(document).ready(function() {
+            // Load tools
+            loadTools();
+            
+            // Setup search functionality
+            setupSearch();
+        });
+    </script>
+</body>
+</html>
